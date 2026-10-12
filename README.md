@@ -12,7 +12,18 @@
 
 **Other files**: `1-challenge/predictions.csv` contains ID + predicted price for all 2,467 test rows; `1-challenge/data/` contains the provided CSVs; `1-challenge/requirements.txt` lists dependencies.
 
-**Reproduce**: `pip install -r 1-challenge/requirements.txt`, then run `1-challenge/final_notebook.ipynb` top to bottom from inside `1-challenge/` (about 15 min, almost all of it grid search). Seed is fixed at 42.
+**Environment (Anaconda)**: we use an Anaconda/conda environment, defined in `1-challenge/environment.yml` (Python 3.13, scikit-learn 1.9.1, pandas 3.0.5, numpy 2.5.3, matplotlib 3.11.2, Jupyter). Setup, from inside `1-challenge/`:
+
+```
+conda env create -f environment.yml
+conda activate cai4105-team11
+python -m ipykernel install --user --name cai4105-team11
+jupyter notebook final_notebook.ipynb
+```
+
+(`requirements.txt` lists the same versions for plain pip users.)
+
+**Reproduce**: select the `cai4105-team11` kernel and run `1-challenge/final_notebook.ipynb` top to bottom from inside `1-challenge/` (about 15 min, almost all of it grid search). Seed is fixed at 42. Re-running in this environment gave a final Gradient Boosting CV RMSE of about 391, matching the reported 390.7 within rounding.
 
 **Approach**: `ID` and the near-constant `category` are dropped; `has_photo` and `state` are one-hot encoded (unknown states ignored, since `WY` only appears in test); numerics are scaled only for linear models. All preprocessing and feature engineering (`log_sqft`, `total_rooms`, `sqft_per_bed`, `bath_per_bed`) live inside sklearn Pipelines, so nothing leaks across folds. Models are trained on `log1p(price)` and predictions are inverted, with RMSE always measured in dollars.
 
