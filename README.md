@@ -8,7 +8,7 @@
 
 ## Challenge 1 – Apartment Rental Price Prediction (regression)
 
-**Files (in `1-challenge/`)**: `notebook.ipynb` (full workflow), `predictions.csv` (ID + predicted price for all 2,467 test rows), `data/` (provided CSVs), `requirements.txt`.
+**Files (in `1-challenge/`)**: `notebook.ipynb` (**the single final notebook**: EDA by Carlos + full modeling workflow; `full_pipeline.ipynb`, `02_linear_and_tree_models.ipynb` and `03_ensembles_final_model.ipynb` are development copies of the same work), `predictions.csv` (ID + predicted price for all 2,467 test rows), `data/` (provided CSVs), `requirements.txt`.
 
 **Reproduce**: `pip install -r requirements.txt`, then run `1-challenge/notebook.ipynb` top to bottom from inside `1-challenge/` (about 15 min, almost all of it grid search). Seed is fixed at 42.
 
