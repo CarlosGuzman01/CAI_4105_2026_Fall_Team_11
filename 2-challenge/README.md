@@ -13,7 +13,7 @@ python -m ipykernel install --user --name cai4105-team11-c2
 jupyter lab final_notebook.ipynb
 ```
 
-**Reproduce**: select the `cai4105-team11-c2` kernel and run the notebook top to bottom from inside `2-challenge/` (about 2 minutes on a laptop, mostly grid search). The seed is fixed at 42, and re-running gives the same `predictions.csv`.
+**Reproduce**: select the `cai4105-team11-c2` kernel and run the notebook top to bottom from inside `2-challenge/` (several minutes on a laptop, mostly randomized search; runtime depends on the CPU). The seed is fixed at 42, and re-running gives the same `predictions.csv`.
 
 **Continuity with Challenge 1**: we reuse the Challenge 1 workflow: seed 42, 5-fold CV on training data only, fold-safe sklearn Pipelines, an `evaluate()` helper that reports train vs CV scores to diagnose overfitting, the required models plus a HistGradientBoosting extra, Grid Search on the strongest models, and a refit of the final model on all training data. Challenge 2 changes what the problem requires: stratified folds and positive-class F1 instead of RMSE (the target is imbalanced), and a decision threshold chosen on out-of-fold predictions.
 
